@@ -1,2 +1,2 @@
-# Django-Advanced-Exam
+# DjigitAuto
 Django Project for the Django Advanced exam
