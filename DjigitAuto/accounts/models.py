@@ -123,6 +123,6 @@ class DjigitAutoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin)
         default=True,
     )
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
 
     object = DjigitAutoUserManager()
