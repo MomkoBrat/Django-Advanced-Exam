@@ -1,18 +1,10 @@
 from django.contrib.auth import views as auth_views, login, logout
-from django.contrib.auth import forms as auth_forms
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from DjigitAuto.accounts.models import DjigitAutoUser
-
-
-class DjigitAutoCreationUserForm(auth_forms.UserCreationForm):
-    user = None
-
-    class Meta(auth_forms.UserCreationForm.Meta):
-        model = DjigitAutoUser
-        fields = ('email',)
+from DjigitAuto.accounts.forms import DjigitAutoCreationUserForm
+from DjigitAuto.accounts.models import DjigitAutoUser, Profile
 
 
 class SignInUserView(auth_views.LoginView):
@@ -31,6 +23,11 @@ class SignUpUserView(views.CreateView):
         login(self.request, form.instance)
 
         return result
+
+
+class ProfileDetailsView(views.DetailView):
+    queryset = Profile.objects.all()
+    template_name = 'accounts/profile-details.html'
 
 
 def signout_user(request):
