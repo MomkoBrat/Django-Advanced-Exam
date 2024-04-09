@@ -2,14 +2,41 @@
 {% load static %}
 {% block main_content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/accounts/details.css' %}">
+        <title>DjigitAuto</title>
+    </head>
 
+    <body>
+    <section id="profile-details">
+        <h1>Profile Details</h1>
+        <div class="profile-header">
+            {% if not object.profile_picture %}
+                <img class="profile-picture" src="{% static 'images/default.jpg' %}" alt="profile-image"/>
+            {% else %}
+                <img class="profile-picture" src="{{ object.profile_picture }}" alt="profile-image"/>
+            {% endif %}
+            {% if object.first_name and object.last_name %}
+                <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+            {% elif object.first_name %}
+                <h1>{{ object.first_name }}</h1>
+            {% elif object.last_name %}
+                <h1>{{ object.last_name }}</h1>
+            {% endif %}
+            <div class="details">
+                <p class="description">Email: {{ object.user.email }}</p>
+                {% if object.date_of_birth %}
+                    <p class="description">Date of birth: {{ object.date_of_birth }}</p>
+                {% endif %}
+            </div>
+            <div class="buttons-container">
+                <a href="#" class="edit-button">Edit</a>
+                <a href="#" class="delete-button">Delete</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
 </body>
 </html>
-{% endblock %}

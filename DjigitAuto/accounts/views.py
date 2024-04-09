@@ -26,7 +26,7 @@ class SignUpUserView(views.CreateView):
 
 
 class ProfileDetailsView(views.DetailView):
-    queryset = Profile.objects.all()
+    queryset = Profile.objects.prefetch_related("user").all()
     template_name = 'accounts/profile-details.html'
 
 
