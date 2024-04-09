@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views, login, logout
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic as views
 
 from DjigitAuto.accounts.forms import DjigitAutoCreationUserForm
@@ -28,6 +28,22 @@ class SignUpUserView(views.CreateView):
 class ProfileDetailsView(views.DetailView):
     queryset = Profile.objects.prefetch_related("user").all()
     template_name = 'accounts/profile-details.html'
+
+
+class ProfileUpdateView(views.UpdateView):
+    queryset = Profile.objects.all()
+    template_name = 'accounts/edit-profile.html'
+    fields = ("profile_picture", "first_name", "last_name", "age")
+
+    def get_success_url(self):
+        return reverse('profile details', kwargs={
+            'pk': self.object.pk,
+        })
+
+
+class ProfileDeleteView(views.DeleteView):
+    queryset = Profile.objects.all()
+    template_name = 'accounts/delete-profile.html'
 
 
 def signout_user(request):

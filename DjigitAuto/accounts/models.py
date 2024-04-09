@@ -129,7 +129,7 @@ class Profile(models.Model):
         null=True,
     )
 
-    date_of_birth = models.DateField(
+    age = models.IntegerField(
         blank=True,
         null=True,
     )

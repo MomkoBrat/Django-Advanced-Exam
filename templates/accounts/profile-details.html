@@ -27,14 +27,16 @@
             {% endif %}
             <div class="details">
                 <p class="description">Email: {{ object.user.email }}</p>
-                {% if object.date_of_birth %}
-                    <p class="description">Date of birth: {{ object.date_of_birth }}</p>
+                {% if object.age %}
+                <p class="description">Age: {{ object.age }}</p>
                 {% endif %}
             </div>
-            <div class="buttons-container">
-                <a href="#" class="edit-button">Edit</a>
-                <a href="#" class="delete-button">Delete</a>
-            </div>
+            {% if object.pk == request.user.pk %}
+                <div class="buttons-container">
+                    <a href="{% url 'edit profile' pk=request.user.pk %}" class="edit-button">Edit</a>
+                    <a href="{% url 'delete profile' pk=request.user.pk %}" class="delete-button">Delete</a>
+                </div>
+            {% endif %}
         </div>
     </section>
 {% endblock %}
