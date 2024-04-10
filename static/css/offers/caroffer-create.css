@@ -1,0 +1,63 @@
+#create-page {
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#create {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#create input[type="text"],
+#create input[type="url"],
+#create textarea,
+#create input[type="number"],
+#create select {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#create input[type="submit"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background-color: dodgerblue;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#create input[type="submit"]:hover {
+    background-color: dodgerblue;
+}
+
+#create label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#create h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.select-brand {
+    color: #666;
+}

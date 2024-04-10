@@ -1,0 +1,33 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block main_content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'css/offers/caroffer-create.css' %}"/>
+        <title>DjigitAuto</title>
+    </head>
+    <section id="create-page" class="auth">
+        <form id="create" action="{% url "create offer" %}" method="post">
+            <h1>Create an Offer</h1>
+            <div class="container">
+                <input type="text" id="id_car_photo" name="car_photo" placeholder="Car Photo"/>
+                <select name="brand">
+                    <option value="" selected disabled>Brand</option>
+                    {% for brand_key, brand_value in form.fields.brand.choices %}
+                        <option value="{{ brand_key }}">{{ brand_value }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" id="id_model" name="model" placeholder="Model"/>
+                <input type="number" id="id_year_of_production" name="year_of_production"
+                       placeholder="Year of Production"/>
+                <input type="number" id="id_price" name="price" placeholder="Price"/>
+                <textarea id="id_description" name="description" placeholder="Description"></textarea>
+                <input class="btn" type="submit" value="Create Offer"/>
+                {% csrf_token %}
+            </div>
+        </form>
+    </section>
+{% endblock %}

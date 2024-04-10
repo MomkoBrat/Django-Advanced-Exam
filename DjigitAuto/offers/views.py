@@ -18,8 +18,8 @@ class ReadOnlyMixin:
 
 class OfferCreateView(LoginRequiredMixin, views.CreateView):
     model = CarOffer
-    fields = ("car_photo", "brand", "model", "year_of_production", "description", "price")
-    template_name = 'offer/create-offer.html'
+    fields = ("car_photo", "brand", "model", "year_of_production", "price", "description")
+    template_name = 'offer/offer-create.html'
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
