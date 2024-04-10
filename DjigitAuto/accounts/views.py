@@ -7,6 +7,16 @@ from DjigitAuto.accounts.forms import DjigitAutoCreationUserForm
 from DjigitAuto.accounts.models import DjigitAutoUser, Profile
 
 
+class ReadOnlyMixin:
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+
+        for field in form.fields.values():
+            field.widget.attrs["readonly"] = "readonly"
+
+        return form
+
+
 class SignInUserView(auth_views.LoginView):
     template_name = "accounts/sign-in.html"
     redirect_authenticated_user = True

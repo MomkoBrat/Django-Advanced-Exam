@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
+from django.utils.text import slugify
 
 UserModel = get_user_model()
 
@@ -34,8 +34,7 @@ class CarOffer(models.Model):
         blank=False,
     )
 
-    car_photo = models.ImageField(
-        upload_to='car_photos',
+    car_photo = models.URLField(
         blank=False,
         null=False,
     )
