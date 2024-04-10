@@ -21,8 +21,10 @@
                 <div class="offer-details">
                     <h1>{{ offer.brand }} {{ offer.model }}</h1>
                     <h3>Year: {{ offer.year_of_production }}</h3>
-                    <p>{{ offer.description }}</p>
-                    <h2>Price: {{ offer.price }}</h2>
+                    {% if offer.description %}
+                        <p>Description: {{ offer.description }}</p>
+                    {% endif %}
+                    <h2>Price: {{ offer.price }}$</h2>
                     <div class="details-buttons">
                         <a href="#" class="details-btn">Details</a>
                     </div>
