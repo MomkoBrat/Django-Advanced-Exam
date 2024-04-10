@@ -1,9 +1,17 @@
 .edit-delete {
-    margin-top: 0%;
+    margin-top: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: block;
+	width: 20em;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(156, 152, 152);
+	padding: 40px;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	box-shadow: 1px 2px 3px #888888;
 }
 
 .edit-delete h2 {
