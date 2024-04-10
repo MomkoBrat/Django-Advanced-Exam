@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include('DjigitAuto.web.urls')),
     path('accounts/', include('DjigitAuto.accounts.urls')),
     path('cars/', include('DjigitAuto.cars.urls')),
-    path('parts/', include('DjigitAuto.parts.urls')),
+    path('offers/', include('DjigitAuto.offers.urls')),
 ]
