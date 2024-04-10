@@ -5,7 +5,7 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <link rel="stylesheet" href="{% static 'css/accounts/details.css' %}">
+        <link rel="stylesheet" href="{% static 'css/accounts/profile-details.css' %}">
         <title>DjigitAuto</title>
     </head>
 
@@ -13,6 +13,7 @@
     <section id="profile-details">
         <h1>Profile Details</h1>
         <div class="profile-header">
+
             {% if not object.profile_picture %}
                 <img class="profile-picture" src="{% static 'images/default.jpg' %}" alt="profile-image"/>
             {% else %}
@@ -25,10 +26,11 @@
             {% elif object.last_name %}
                 <h1>{{ object.last_name }}</h1>
             {% endif %}
+
             <div class="details">
                 <p class="description">Email: {{ object.user.email }}</p>
                 {% if object.age %}
-                <p class="description">Age: {{ object.age }}</p>
+                    <p class="description">Age: {{ object.age }}</p>
                 {% endif %}
             </div>
             {% if object.pk == request.user.pk %}

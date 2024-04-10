@@ -1,38 +1,42 @@
 #profile-details {
-    width: 20%;
-    margin: 50px auto;
-    border: 2px solid black;
-    background-color: #ccc;
-    padding: 20px;
-    display: flex;
+    margin: 30px auto;
+    margin-top: 10em;
     flex-direction: column;
     align-items: center;
+    display: block;
+	width: 20em;
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(156, 152, 152);
+	padding: 20px;
+	border-radius: 3px;
+	box-shadow: 1px 2px 3px #888888;
 }
 
 h1 {
     text-align: center;
-    margin-top: 0;
+    margin-bottom: 0.25em;
 }
 
 .profile-header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1em;
 }
 
 .profile-picture {
-    width: 12em;
-    height: 12em;
+    width: 13em;
+    height: 13em;
     border-radius: 50%;
     margin-bottom: 20px;
 }
 
 .details {
-    text-align: left;
+    text-align: center;
 }
 
 .description {
-    margin: 0;
+    margin: 0.25em;
 }
 
 .buttons-container {
@@ -42,11 +46,11 @@ h1 {
 
 .edit-button, .delete-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 5px 25px;
     background-color: dodgerblue;
     color: white;
     text-decoration: none;
     margin-right: 10px;
-    border-radius: 5px;
-    margin-top: 10px; /* Add margin between buttons and profile details */
+    border-radius: 3px;
+    margin-top: 25px;
 }
