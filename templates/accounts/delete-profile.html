@@ -1,4 +1,14 @@
 {% extends "common/base.html" %}
 {% load static %}
 {% block main_content %}
+<section id="create-page" class="auth">
+
+    <div class="container">
+        <h1>Are you sure you want to delete your profile?</h1>
+        <form id='delete' action="{% url 'delete profile' pk=object.pk%}" method="post">
+            <input class="btn submit" type="submit" value="Yes">
+            {% csrf_token %}
+        </form>
+    </div>
+</section>
 {% endblock %}

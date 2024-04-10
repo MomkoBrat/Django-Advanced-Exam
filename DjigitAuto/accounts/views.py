@@ -1,7 +1,9 @@
 from django.contrib.auth import views as auth_views, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic as views
+from django.views.generic import DeleteView
 
 from DjigitAuto.accounts.forms import DjigitAutoCreationUserForm
 from DjigitAuto.accounts.models import DjigitAutoUser, Profile
@@ -51,9 +53,13 @@ class ProfileUpdateView(views.UpdateView):
         })
 
 
-class ProfileDeleteView(views.DeleteView):
-    queryset = Profile.objects.all()
-    template_name = 'accounts/delete-profile.html'
+class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+    model = Profile
+    template_name = "accounts/delete-profile.html"
+    success_url = reverse_lazy("index")
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 def signout_user(request):
