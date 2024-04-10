@@ -32,6 +32,10 @@
                 {% if object.age %}
                     <p class="description">Age: {{ object.age }}</p>
                 {% endif %}
+                {% if user.caroffer_set.all %}
+                    <p class="description">Number of offers: {{ user.caroffer_set.count }}</p>
+                {% endif %}
+
             </div>
             {% if object.pk == request.user.pk %}
                 <div class="buttons-container">

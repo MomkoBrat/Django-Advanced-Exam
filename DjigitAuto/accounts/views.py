@@ -7,6 +7,7 @@ from django.views.generic import DeleteView
 
 from DjigitAuto.accounts.forms import DjigitAutoCreationUserForm
 from DjigitAuto.accounts.models import DjigitAutoUser, Profile
+from DjigitAuto.offers.models import CarOffer
 
 
 class ReadOnlyMixin:
@@ -46,6 +47,13 @@ class ProfileUpdateView(views.UpdateView):
     queryset = Profile.objects.all()
     template_name = 'accounts/edit-profile.html'
     fields = ("profile_picture", "first_name", "last_name", "age")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.get_object()
+        car_offers = CarOffer.objects.filter(user=profile.user)
+        context['car_offers'] = car_offers
+        return context
 
     def get_success_url(self):
         return reverse('profile details', kwargs={
