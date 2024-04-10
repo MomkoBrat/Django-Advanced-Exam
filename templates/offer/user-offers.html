@@ -1,0 +1,36 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block main_content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/offers/user-offer.css' %}"/>
+        <title>DjigitAuto</title>
+    </head>
+    <body>
+
+    <section id="catalogue">
+        {% for offer in offers %}
+            <div class="offer-card">
+                <div class="image-wrap">
+                    <img src="{{ offer.car_photo }}" alt=""/>
+                </div>
+                <div class="offer-details">
+                    <h1>{{ offer.brand }} {{ offer.model }}</h1>
+                    <h3>Year: {{ offer.year_of_production }}</h3>
+                    <p>{{ offer.description }}</p>
+                    <h2>Price: {{ offer.price }}</h2>
+                    <div class="details-buttons">
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    </body>
+    </html>
+{% endblock %}

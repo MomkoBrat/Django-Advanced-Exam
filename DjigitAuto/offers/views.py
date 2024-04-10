@@ -25,3 +25,12 @@ class OfferCreateView(LoginRequiredMixin, views.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+def user_catalogue(request, pk):
+    user_offers = CarOffer.objects.filter(user=request.user)
+
+    context = {
+        "offers": user_offers,
+    }
+    return render(request, "offer/user-offers.html", context=context)
