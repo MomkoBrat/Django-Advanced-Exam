@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import UpdateView
 
 from DjigitAuto.offers.models import CarOffer
 
@@ -34,3 +35,12 @@ def user_catalogue(request, pk):
         "offers": user_offers,
     }
     return render(request, "offer/user-offers.html", context=context)
+
+
+class CarOfferEditView(UpdateView):
+    model = CarOffer
+    template_name = 'offer/offer-edit.html'
+    fields = ['car_photo', 'brand', 'model', 'year_of_production', 'description', 'price']
+
+    def get_success_url(self):
+        return reverse_lazy('user offers', kwargs={'pk': self.object.pk})

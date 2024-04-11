@@ -1,0 +1,63 @@
+.edit-delete {
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.edit-delete h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.edit-delete form {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-delete form p {
+    margin-bottom: 5px;
+}
+
+.edit-delete form input[type="text"],
+.edit-delete form input[type="url"],
+.edit-delete form input[type="number"],
+.edit-delete form select,
+.edit-delete form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.edit-delete form textarea {
+    height: 100px;
+}
+
+.edit-delete form button.edit-btn {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    background-color: dodgerblue;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-delete form button.edit-btn:hover {
+    background-color: #007bff;
+}
+
+.edit-delete form label {
+    display: block;
+    margin-bottom: 5px;
+}

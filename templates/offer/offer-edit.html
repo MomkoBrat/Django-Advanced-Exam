@@ -1,0 +1,42 @@
+{% extends "common/base.html" %}
+{% load placeholder %}
+{% load static %}
+{% block main_content %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'css/offers/edit-offer.css' %}"/>
+        <title>DjigitAuto</title>
+    </head>
+    <body>
+    <div class="edit-delete">
+        <form action="{% url 'edit offer' pk=caroffer.pk %}" method="post">
+             <h2>Edit Offer</h2>
+            <p>
+                {{ form.car_photo|placeholder:'Car Photo' }}
+            </p>
+            <p>
+                {{ form.brand|placeholder:'Brand' }}
+            </p>
+            <p>
+                {{ form.model|placeholder:'Model' }}
+            </p>
+            <p>
+                {{ form.year_of_production|placeholder:'Year of Production' }}
+            </p>
+            <p>
+                {{ form.price|placeholder:'Price in USD' }}
+            </p>
+            <p>
+                {{ form.description|placeholder:'Description' }}
+            </p>
+            <button class="edit-btn" type="submit">Edit</button>
+            {% csrf_token %}
+        </form>
+    </div>
+    </body>
+    </html>
+{% endblock %}
