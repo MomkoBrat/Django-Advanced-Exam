@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 
 from DjigitAuto.offers.models import CarOffer
 
@@ -44,3 +44,14 @@ class CarOfferEditView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('user offers', kwargs={'pk': self.object.pk})
+
+
+class CarOfferDeleteView(LoginRequiredMixin, DeleteView):
+    model = CarOffer
+    template_name = 'offer/delete-offer.html'
+
+    def get_success_url(self):
+        return reverse_lazy('user offers', kwargs={'pk': self.object.pk})
+
+    def get_object(self, queryset=None):
+        return super().get_object(queryset=queryset)

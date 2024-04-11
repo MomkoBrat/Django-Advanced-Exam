@@ -6,17 +6,17 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="{% static 'css/accounts/profile-delete.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/offers/caroffer-delete.css' %}"/>
         <title>DjigitAuto</title>
     </head>
     <section id="create-page" class="auth">
 
         <div class="container">
-            <h1>Are you sure you want to delete your profile?</h1>
-            <form id='delete' action="{% url 'delete profile' pk=object.pk %}" method="post">
+            <h1>Are you sure you want to delete the offer?</h1>
+            <form id='delete' action="{% url 'delete offer' pk=caroffer.pk %}" method="post">
                 <input class="btn submit" type="submit" value="Yes">
                 {% csrf_token %}
-                <a class="btn-no" href="{% url 'profile details' pk=object.pk %}">No</a>
+                <a class="btn-no" href="{% url 'user offers' pk=object.pk %}">No</a>
             </form>
         </div>
     </section>

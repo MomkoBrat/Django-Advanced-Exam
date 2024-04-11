@@ -26,7 +26,7 @@
                     <h2>Price: {{ offer.price }}$</h2>
                     <div class="buttons-container">
                         <a href="{% url 'edit offer' pk=offer.pk %}" class="edit-button">Edit</a>
-                        <a href="{% url 'delete profile' pk=request.user.pk %}" class="delete-button">Delete</a>
+                        <a href="{% url 'delete offer' pk=offer.pk %}" class="delete-button">Delete</a>
                     </div>
                 </div>
             </div>
