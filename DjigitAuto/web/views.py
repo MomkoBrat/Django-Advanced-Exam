@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpResponseForbidden
+from django.shortcuts import render, redirect, get_object_or_404
+
+from DjigitAuto.offers.models import CarOffer
+from DjigitAuto.web.models import OfferLike
 
 
 def check_for_account(request):
@@ -8,3 +12,11 @@ def check_for_account(request):
 
 def index(request):
     return render(request, 'common/index.html')
+
+
+def catalogue(request):
+    context = {
+        "cars": CarOffer.objects.all(),
+    }
+
+    return render(request, 'offer/../../templates/common/catalogue.html', context=context)

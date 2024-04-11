@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('cars', '0003_remove_car_model_remove_car_year_of_production'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 

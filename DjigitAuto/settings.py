@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # My apps
     'DjigitAuto.accounts',
     'DjigitAuto.web',
-    'DjigitAuto.cars',
     'DjigitAuto.offers',
 ]
 

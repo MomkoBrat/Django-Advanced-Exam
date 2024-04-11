@@ -6,11 +6,29 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="{% static 'css/offers/user-offer.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/common/catalogue.css' %}"/>
         <title>DjigitAuto</title>
     </head>
-<body>
+    <body>
 
-</body>
-</html>
+    <section id="catalogue">
+        {% for car in cars %}
+            <div class="offer-card">
+                <div class="image-wrap">
+                    <img src="{{ car.car_photo }}" alt=""/>
+                </div>
+                <div class="offer-details">
+                    <h1>{{ car.brand }} {{ car.model }}</h1>
+                    <h3>Year: {{ car.year_of_production }}</h3>
+                    {% if car.description %}
+                        <p>Description: {{ car.description }}</p>
+                    {% endif %}
+                    <h2>Price: {{ car.price }}$</h2>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    </body>
+    </html>
 {% endblock %}
