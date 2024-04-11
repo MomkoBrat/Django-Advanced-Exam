@@ -37,10 +37,10 @@ class OfferComment(models.Model):
 class OfferLike(models.Model):
     car_offer = models.ForeignKey(
         CarOffer,
-        on_delete=models.RESTRICT,
+        on_delete=models.CASCADE,
     )
 
     user = models.ForeignKey(
         UserModel,
-        on_delete=models.RESTRICT
+        on_delete=models.CASCADE,
     )
