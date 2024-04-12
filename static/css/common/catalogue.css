@@ -59,3 +59,41 @@
     justify-content: center;
     margin-top: 25px;
 }
+
+.offer-card {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 20px 20px 0;
+    width: calc(33.33% - 20px);
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.offer-card .offer-details {
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Add relative positioning to offer details */
+}
+
+.offer-card .comment-button {
+    text-decoration: none;
+    display: block;
+    width: 80%;
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.offer-card .offer-details h2 {
+    margin-bottom: 50px; /* Increase margin bottom to create space for the comment button */
+}

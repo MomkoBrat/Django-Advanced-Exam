@@ -2,9 +2,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import UpdateView, DeleteView
+from django.views.generic import UpdateView, DeleteView, CreateView
 
 from DjigitAuto.offers.models import CarOffer
+from DjigitAuto.web.models import OfferComment
 
 
 class ReadOnlyMixin:
@@ -55,3 +56,36 @@ class CarOfferDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_object(self, queryset=None):
         return super().get_object(queryset=queryset)
+
+
+def comments(request, pk):
+    offer = CarOffer.objects.get(pk=pk)
+    offer_comments = OfferComment.objects.filter(car_offer_id=pk)
+
+    context = {
+        "comments": offer_comments,
+        "offer": offer,
+    }
+
+    return render(request, 'offer/comments.html', context=context)
+
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = OfferComment
+    fields = ("text", )
+    template_name = 'offer/create-comment.html'
+    success_url = reverse_lazy('comments')
+
+    def form_valid(self, form):
+        car_offer = get_object_or_404(CarOffer, pk=self.kwargs.get('pk'))
+        form.instance.user = self.request.user
+        form.instance.car_offer = car_offer
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pk'] = self.kwargs.get('pk')
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('comments', kwargs={'pk': self.kwargs.get('pk')})

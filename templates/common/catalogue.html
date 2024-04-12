@@ -19,11 +19,13 @@
                 </div>
                 <div class="offer-details">
                     <h1>{{ car.brand }} {{ car.model }}</h1>
+                    <h3>Seller: {{ car.user.email }}</h3>
                     <h3>Year: {{ car.year_of_production }}</h3>
                     {% if car.description %}
                         <p>Description: {{ car.description }}</p>
                     {% endif %}
                     <h2>Price: {{ car.price }}$</h2>
+                    <a href="{% url 'comments' pk=car.pk %}" class="comment-button">Comments</a>
                 </div>
             </div>
         {% endfor %}

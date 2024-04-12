@@ -1,0 +1,33 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block main_content %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'css/offers/comments.css' %}"/>
+        <title>DjigitAuto</title>
+    </head>
+    <body>
+    {% if not user_has_commented %}
+        <div class="create-comment">
+            <a href="{% url 'create comment' pk=offer.pk %}" class="add-comment-button">Add Comment</a>
+        </div>
+    {% endif %}
+    {% for comment in comments %}
+        <div class="comment-container">
+            <p class="comment-user">{{ comment.user.email }}'s comment:</p>
+            <p class="comment-text">{{ comment.text }}</p>
+            {% if request.user.is_authenticated and comment.user.id == request.user.id %}
+                <div class="comment-actions">
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </body>
+    </html>
+{% endblock %}

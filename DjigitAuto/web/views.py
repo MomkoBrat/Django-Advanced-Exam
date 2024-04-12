@@ -2,7 +2,7 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from DjigitAuto.offers.models import CarOffer
-from DjigitAuto.web.models import OfferLike
+from DjigitAuto.web.models import OfferLike, OfferComment
 
 
 def check_for_account(request):
@@ -19,4 +19,4 @@ def catalogue(request):
         "cars": CarOffer.objects.all(),
     }
 
-    return render(request, 'offer/../../templates/common/catalogue.html', context=context)
+    return render(request, 'common/catalogue.html', context=context)
