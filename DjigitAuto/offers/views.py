@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
-from django.views import generic as views
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy, reverse
+from django.views import generic as views, View
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import UpdateView, DeleteView, CreateView
 
+from DjigitAuto.offers.forms import EditCommentForm
 from DjigitAuto.offers.models import CarOffer
 from DjigitAuto.web.models import OfferComment
 
@@ -74,7 +75,6 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     model = OfferComment
     fields = ("text", )
     template_name = 'offer/create-comment.html'
-    success_url = reverse_lazy('comments')
 
     def form_valid(self, form):
         car_offer = get_object_or_404(CarOffer, pk=self.kwargs.get('pk'))
@@ -89,3 +89,51 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('comments', kwargs={'pk': self.kwargs.get('pk')})
+
+
+class EditCommentView(LoginRequiredMixin, View):
+    template_name = 'offer/edit-comment.html'
+
+    def get(self, request, pk, pk1):
+        comment = get_object_or_404(OfferComment, id=pk1)
+        form = EditCommentForm(instance=comment)
+
+        context = {
+            'form': form,
+            'comment': comment,
+        }
+
+        return render(request, self.template_name, context=context)
+
+    def post(self, request, pk, pk1):
+        comment = get_object_or_404(OfferComment, id=pk1)
+        form = EditCommentForm(request.POST, instance=comment)
+
+        if form.is_valid():
+            form.save()
+            return redirect('comments', pk=pk)
+
+        context = {
+            'form': form,
+            'comment': comment,
+        }
+
+        return render(request, self.template_name, context=context)
+
+
+class DeleteCommentView(LoginRequiredMixin, View):
+    template_name = 'offer/commentdelete.html'
+
+    def get(self, request, comment_id, pk):
+        comment = get_object_or_404(OfferComment, id=comment_id)
+
+        context = {
+            'comment': comment,
+        }
+        return render(request, self.template_name, context=context)
+
+    def post(self, request, comment_id, pk):
+        comment = get_object_or_404(OfferComment, id=comment_id)
+        comment.delete()
+
+        return redirect(reverse('comments', kwargs={'pk': pk}))

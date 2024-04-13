@@ -11,19 +11,17 @@
         <title>DjigitAuto</title>
     </head>
     <body>
-    {% if not user_has_commented %}
         <div class="create-comment">
             <a href="{% url 'create comment' pk=offer.pk %}" class="add-comment-button">Add Comment</a>
         </div>
-    {% endif %}
     {% for comment in comments %}
         <div class="comment-container">
             <p class="comment-user">{{ comment.user.email }}'s comment:</p>
             <p class="comment-text">{{ comment.text }}</p>
             {% if request.user.is_authenticated and comment.user.id == request.user.id %}
                 <div class="comment-actions">
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="{% url 'edit comment' pk=comment.car_offer.pk pk1=comment.pk %}">Edit</a>
+                    <a href="{% url 'delete comment' pk=comment.car_offer.pk comment_id=comment.id %}">Delete</a>
                 </div>
             {% endif %}
         </div>

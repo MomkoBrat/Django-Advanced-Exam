@@ -15,11 +15,11 @@ class OfferComment(models.Model):
         blank=False
     )
 
-    created_at = models.DateField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
     )
 
-    modified_at = models.DateField(
+    modified_at = models.DateTimeField(
         auto_now=True,
     )
 

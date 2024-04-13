@@ -1,0 +1,25 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block main_content %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'css/offers/delete-comment.css' %}"/>
+        <title>DjigitAuto</title>
+    </head>
+    <section id="create-page" class="auth">
+
+        <div class="container">
+            <h1>Are you sure you want to delete your comment?</h1>
+            <form id='delete' action="{% url 'delete comment' pk=comment.car_offer.pk comment_id=comment.id %}" method="post">
+                <input class="btn submit" type="submit" value="Yes">
+                {% csrf_token %}
+                <a class="btn-no" href="{% url 'comments' pk=comment.car_offer.pk %}">No</a>
+            </form>
+        </div>
+    </section>
+    </html>
+{% endblock %}
