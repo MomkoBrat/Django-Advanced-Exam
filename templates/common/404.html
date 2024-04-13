@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/common/404.css' %}">
     <title>404 Page Not Found</title>
-    <link rel="stylesheet" href="40">
+    <link rel="stylesheet" href="{% static 'css/common/404.css' %}">
 </head>
 <body>
     <div class="error-container">
         <h1>404</h1>
         <p>Oops! The page you're looking for cannot be found.</p>
-        <a href="/">Go to Home Page</a>
+        <a href="{% url 'index' %}">Go to Home Page</a>
     </div>
 </body>
 </html>

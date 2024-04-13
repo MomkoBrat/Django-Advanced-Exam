@@ -22,5 +22,5 @@ def catalogue(request):
     return render(request, 'common/catalogue.html', context=context)
 
 
-def custom_404_view(request, exception):
+def handling404(request, exception):
     return render(request, 'common/404.html', status=404)
