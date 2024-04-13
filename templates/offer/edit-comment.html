@@ -14,7 +14,7 @@
     <div class="container">
         <form id="edit-comment-form" action="{% url 'edit comment' pk=comment.car_offer.pk pk1=comment.pk %}" method="post">
             <h1>Edit Comment</h1>
-            <input type="text" id="id_car_photo" name="text" placeholder="Text"/>
+            {{ form.text }}
             {% csrf_token %}
             <button type="submit">Edit Comment</button>
         </form>
