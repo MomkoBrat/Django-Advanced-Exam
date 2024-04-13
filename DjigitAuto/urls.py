@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from DjigitAuto import accounts
+from DjigitAuto.web.views import custom_404_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +26,4 @@ urlpatterns = [
     path('accounts/', include('DjigitAuto.accounts.urls')),
     path('offers/', include('DjigitAuto.offers.urls')),
 ]
+handler404 = custom_404_view
