@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'DjigitAuto.accounts',
     'DjigitAuto.web',
     'DjigitAuto.offers',
+    'DjigitAuto.admin_app',
 ]
 
 MIDDLEWARE = [
